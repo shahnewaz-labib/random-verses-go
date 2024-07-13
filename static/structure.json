@@ -1,0 +1,21 @@
+{
+    "quran" : [
+        {
+            "surahNumber": 1,
+            "surahName": "surahName1",
+            "ayahs": [
+                { "ayahNumber": 1, "ayahText": "verse text" },
+                { "ayahNumber": 2, "ayahText": "verse text" }
+            ]
+        },
+        {
+            "surahNumber": 2,
+            "surahName": "surahName2",
+            "ayahs": [
+                { "ayahNumber": 1, "ayahText": "verse text" },
+                { "ayahNumber": 2, "ayahText": "verse text" },
+                { "ayahNumber": 3, "ayahText": "verse text" }
+            ]
+        }
+    ]
+}
