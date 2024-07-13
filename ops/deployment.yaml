@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-verses-go-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: random-verses-go
+  template:
+    metadata:
+      labels:
+        app: random-verses-go
+    spec:
+      containers:
+        - name: random-verses-go
+          image: shahnewazlabib/random-verses-go:latest
+          ports:
+            - containerPort: 6969
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 500m
+              memory: 500Mi
+        - name: random-verses-go
+          image: shahnewazlabib/random-verses-go:latest
+          ports:
+            - containerPort: 6969
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 500m
+              memory: 500Mi
