@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	Port = "6969"
+	Port     = "6969"
 	fileName = "./static/quran-final.json"
 )
 
@@ -22,14 +22,14 @@ type Quran struct {
 }
 
 type Surah struct {
-	SurahNumber int `json:"surahNumber"`
-	SurahName string `json:"surahName"`
-	Ayahs []Ayah `json:"ayahs"`
+	SurahNumber int    `json:"surahNumber"`
+	SurahName   string `json:"surahName"`
+	Ayahs       []Ayah `json:"ayahs"`
 }
 
 type Ayah struct {
-	AyahNumber int `json:"ayahNumber"`
-	AyahText string `json:"ayahText"`
+	AyahNumber int    `json:"ayahNumber"`
+	AyahText   string `json:"ayahText"`
 }
 
 func (quran *Quran) getSurahByNumber(surahNumber int) Surah {
@@ -75,7 +75,6 @@ func main() {
 
 	var quran Quran
 	json.Unmarshal(byteValue, &quran)
-
 
 	// serve
 	router := gin.Default()
@@ -123,7 +122,7 @@ func main() {
 		surahName := quran.getSurahName(surahNumber)
 
 		c.JSON(http.StatusOK, gin.H{
-			"ayah": ayah,
+			"ayah":      ayah,
 			"surahName": surahName,
 		})
 	})
@@ -131,16 +130,16 @@ func main() {
 	router.GET("/random", func(c *gin.Context) {
 		randomSurah := 1 + (rand.Int() % 114)
 		randomAyah := 1 + (rand.Int() % quran.getSurahLength(randomSurah))
-		
+
 		ayah := quran.getAyah(randomSurah, randomAyah)
 		surahName := quran.getSurahName(randomSurah)
 
 		c.JSON(http.StatusOK, gin.H{
-			"ayah": ayah,
+			"ayah":      ayah,
 			"surahName": surahName,
 		})
 	})
 
-	log.Println("Server started at :"+Port)
-	router.Run(":"+Port)
+	log.Println("Server started at :" + Port)
+	router.Run(":" + Port)
 }
